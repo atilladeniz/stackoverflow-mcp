@@ -16,13 +16,13 @@ A Model Context Protocol server for querying Stack Overflow. This server helps A
 You can run the server directly using npx:
 
 ```bash
-npx -y @gscalzo/stackoverflow-mcp
+npx -y @atilladeniz/stackoverflow-mcp
 ```
 
 Or install it globally:
 
 ```bash
-npm install -g @gscalzo/stackoverflow-mcp
+npm install -g @atilladeniz/stackoverflow-mcp
 ```
 
 ### Configure the Server
@@ -39,7 +39,7 @@ Add the following configuration:
   "mcpServers": {
     "stackoverflow": {
       "command": "npx",
-      "args": ["-y", "@gscalzo/stackoverflow-mcp"],
+      "args": ["-y", "@atilladeniz/stackoverflow-mcp"],
       "env": {
         "STACKOVERFLOW_API_KEY": "your-api-key-optional"
       },
@@ -67,13 +67,13 @@ Searches Stack Overflow for error-related questions:
 
 ```typescript
 interface SearchByErrorInput {
-  errorMessage: string;          // Required: Error message to search for
-  language?: string;            // Optional: Programming language
-  technologies?: string[];      // Optional: Related technologies
-  minScore?: number;           // Optional: Minimum score threshold
-  includeComments?: boolean;    // Optional: Include comments in results
+  errorMessage: string; // Required: Error message to search for
+  language?: string; // Optional: Programming language
+  technologies?: string[]; // Optional: Related technologies
+  minScore?: number; // Optional: Minimum score threshold
+  includeComments?: boolean; // Optional: Include comments in results
   responseFormat?: "json" | "markdown"; // Optional: Response format
-  limit?: number;              // Optional: Maximum number of results
+  limit?: number; // Optional: Maximum number of results
 }
 ```
 
@@ -83,11 +83,11 @@ Searches Stack Overflow questions by tags:
 
 ```typescript
 interface SearchByTagsInput {
-  tags: string[];              // Required: Tags to search for
-  minScore?: number;          // Optional: Minimum score threshold
-  includeComments?: boolean;   // Optional: Include comments in results
+  tags: string[]; // Required: Tags to search for
+  minScore?: number; // Optional: Minimum score threshold
+  includeComments?: boolean; // Optional: Include comments in results
   responseFormat?: "json" | "markdown"; // Optional: Response format
-  limit?: number;             // Optional: Maximum number of results
+  limit?: number; // Optional: Maximum number of results
 }
 ```
 
@@ -97,11 +97,11 @@ Analyzes stack traces to find relevant solutions:
 
 ```typescript
 interface StackTraceInput {
-  stackTrace: string;          // Required: Stack trace to analyze
-  language: string;           // Required: Programming language
-  includeComments?: boolean;   // Optional: Include comments in results
+  stackTrace: string; // Required: Stack trace to analyze
+  language: string; // Required: Programming language
+  includeComments?: boolean; // Optional: Include comments in results
   responseFormat?: "json" | "markdown"; // Optional: Response format
-  limit?: number;             // Optional: Maximum number of results
+  limit?: number; // Optional: Maximum number of results
 }
 ```
 
@@ -159,6 +159,7 @@ interface StackTraceInput {
 ### JSON Output
 
 Responses include:
+
 - Question details (title, body, score, tags, etc.)
 - Answers (sorted by votes)
 - Optional comments for both questions and answers
@@ -167,6 +168,7 @@ Responses include:
 ### Markdown Output
 
 The markdown format provides a nicely formatted view with:
+
 - Question title and score
 - Question body
 - Comments (if requested)
@@ -177,11 +179,13 @@ The markdown format provides a nicely formatted view with:
 ## Development
 
 1. Build in watch mode:
+
 ```bash
 npm run watch
 ```
 
 2. Run tests:
+
 ```bash
 npm test
 ```
